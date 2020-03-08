@@ -1,0 +1,9 @@
+{
+    "include_regions" : [{
+        "desc" : "Murrindindi Shire and around",
+        "west" : 145.2,
+        "east" : 146.3,
+        "north" : -36.8,
+        "south" : -37.5
+    }]   
+}
