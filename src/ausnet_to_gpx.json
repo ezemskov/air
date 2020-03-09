@@ -1,4 +1,6 @@
 {
+    "input_filename" : "../data/22kV_Ausnet_Victorian_Sub-Transmission_MV_Lines.txt",
+    "output_gpx_filename" : "../data/22kV_Ausnet_Victorian_Sub-Transmission_MV_Lines.txt",
     "include_regions" : [{
         "desc" : "Murrindindi Shire and around",
         "west" : 145.2,
