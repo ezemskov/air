@@ -19,6 +19,22 @@ def latSign(deg):
 def lonSign(deg):
     return ' ' + ('E' if (deg > 0) else 'W') 
 
+def formatOpenairPolygonVertex(gpxPoint):
+    lat = gpxPoint.latitude
+    lon = gpxPoint.longitude
+    latStr = formatDms(degToAbsDms(lat)) + latSign(lat)
+    lonStr = formatDms(degToAbsDms(lon)) + lonSign(lon)
+    print('DP {0} {1}'.format(latStr, lonStr))
+
+def formatOpenairPowerline(p1, p2): 
+    print('AC Q')
+    print('AN Powerline')
+    print('AL SFC')
+    print('AH 100 ft AGL')
+    formatOpenairPolygonVertex(p1)
+    formatOpenairPolygonVertex(p2)
+    print('')
+
 
 if len(sys.argv) < 2:
     sys.stderr.write("Usage : " + sys.argv[0] + " input.gpx > output_openair.txt\n")
@@ -29,16 +45,10 @@ with open(sys.argv[1], 'r') as gpxFile:
 
     for gpxTrack in gpx.tracks:
         for gpxSegment in gpxTrack.segments:
+            gpxPointPrev  = None
             if len(gpxSegment.points) == 0:
                 continue
-            print('AC Q')
-            print('AN Powerline')
-            print('AL SFC')
-            print('AH 100 ft AGL')
             for gpxPoint in gpxSegment.points:
-                lat = gpxPoint.latitude
-                lon = gpxPoint.longitude
-                latStr = formatDms(degToAbsDms(lat)) + latSign(lat)
-                lonStr = formatDms(degToAbsDms(lon)) + lonSign(lon)
-                print('DP {0} {1}'.format(latStr, lonStr))
-            print('\n')
+                if (gpxPointPrev != None):
+                    formatOpenairPowerline(gpxPointPrev, gpxPoint)
+                gpxPointPrev = gpxPoint
