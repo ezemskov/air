@@ -23,14 +23,14 @@ with open(ConfigFilename, newline='') as jsonFile:
     inputFilename = jsonDic["input_filename"]
 
 gpx = gpxpy.gpx.GPX()
-gpxTrack = gpxpy.gpx.GPXTrack()
-gpx.tracks.append(gpxTrack)
 
 with open(inputFilename, newline='') as csvfile:
     ausnetReader = csv.reader(csvfile)
     for row in ausnetReader:
+        gpxTrack = gpxpy.gpx.GPXTrack()
         gpxSegment = gpxpy.gpx.GPXTrackSegment()
 
+        gpxTrack.name = row[0]
         polylineEnc = row[1] 
         polylineDec = polyline.decode(polylineEnc)
         for vertexTuple in polylineDec:
@@ -40,5 +40,6 @@ with open(inputFilename, newline='') as csvfile:
 
         if len(gpxSegment.points) > 0:
             gpxTrack.segments.append(gpxSegment)    
+            gpx.tracks.append(gpxTrack)
 
 sys.stdout.write(gpx.to_xml())

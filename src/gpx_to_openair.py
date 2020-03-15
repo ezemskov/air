@@ -26,9 +26,9 @@ def formatOpenairPolygonVertex(gpxPoint):
     lonStr = formatDms(degToAbsDms(lon)) + lonSign(lon)
     print('DP {0} {1}'.format(latStr, lonStr))
 
-def formatOpenairPowerline(p1, p2): 
+def formatOpenairPowerline(p1, p2, name = ""): 
     print('AC Q')
-    print('AN Powerline')
+    print('AN Powerline ' + name)
     print('AL SFC')
     print('AH 100 ft AGL')
     formatOpenairPolygonVertex(p1)
@@ -50,5 +50,5 @@ with open(sys.argv[1], 'r') as gpxFile:
                 continue
             for gpxPoint in gpxSegment.points:
                 if (gpxPointPrev != None):
-                    formatOpenairPowerline(gpxPointPrev, gpxPoint)
+                    formatOpenairPowerline(gpxPointPrev, gpxPoint, gpxTrack.name)
                 gpxPointPrev = gpxPoint
