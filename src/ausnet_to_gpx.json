@@ -1,11 +1,54 @@
 {
-    "input_filename" : "../data/12kV_Ausnet_Victorian_Transmission_MV_Lines.txt",
-    "_input_filename" : "../data/22kV_Ausnet_Victorian_Sub-Transmission_MV_Lines.txt",
+    "_input_filename" : "../data/12kV_Ausnet_Victorian_Transmission_MV_Lines.txt",
+    "input_filename" : "../data/22kV_Ausnet_Victorian_Sub-Transmission_MV_Lines.txt",
     "include_regions" : [{
-        "desc" : "Murrindindi Shire and around",
-        "west" : 145.2,
-        "east" : 146.3,
-        "north" : -36.8,
-        "south" : -37.5
-    }]   
+            "desc" : "West from Flowerdale",
+            "west" : 145.15,
+            "east" : 145.3,
+            "north" : -37.2,
+            "south" : -37.3
+        },{
+            "desc" : "Flowerdale to Break O'Day",
+            "west" : 145.25,
+            "east" : 145.35,
+            "north" : -37.25,
+            "south" : -37.35
+        },{
+            "desc" : "Break O'Day to Glenburn",
+            "west" : 145.35,
+            "east" : 145.50,
+            "north" : -37.35,
+            "south" : -37.45
+        },{
+            "desc" : "Yea to Glenburn",
+            "west" : 145.35,
+            "east" : 145.50,
+            "north" : -37.20,
+            "south" : -37.45
+        },{
+            "desc" : "Around Yea : Kerrisdale to Molesworth",
+            "west" : 145.25,
+            "east" : 145.55,
+            "north" : -37.12,
+            "south" : -37.22
+        },{
+            "desc" : "Molesworth to Merton",
+            "west" : 145.58,
+            "east" : 145.75,
+            "north" : -36.95,
+            "south" : -37.18
+        },{
+            "desc" : "Highlands",
+            "west" : 145.35,
+            "east" : 145.58,
+            "north" : -36.90,
+            "south" : -37.12
+        },{
+            "desc" : "",
+            "west" : 0.0,
+            "east" : 0.0,
+            "north" : 0.0,
+            "south" : 0.0
+        }
+    ]   
 }

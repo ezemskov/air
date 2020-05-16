@@ -26,6 +26,10 @@ def formatOpenairPolygonVertex(gpxPoint):
     lonStr = formatDms(degToAbsDms(lon)) + lonSign(lon)
     print('DP {0} {1}'.format(latStr, lonStr))
 
+LatLonThr = 1/(10 * 60 * 60) # 0.1 arcsecond
+def pointsTooClose(p1, p2):
+    return (abs(p1.latitude  - p2.latitude)  < LatLonThr) and (abs(p1.longitude - p2.longitude) < LatLonThr)
+
 def formatOpenairPowerline(p1, p2, name = ""): 
     print('AC Q')
     print('AN Powerline ' + name)
@@ -49,6 +53,6 @@ with open(sys.argv[1], 'r') as gpxFile:
             if len(gpxSegment.points) == 0:
                 continue
             for gpxPoint in gpxSegment.points:
-                if (gpxPointPrev != None):
+                if (gpxPointPrev != None) and (pointsTooClose(gpxPointPrev, gpxPoint) == False):
                     formatOpenairPowerline(gpxPointPrev, gpxPoint, gpxTrack.name)
                 gpxPointPrev = gpxPoint
